@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="elfin">
+<head>
+  <link type="image/ico" href="/img/favicon.ico">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <style>
+          html                    { overflow-y:scroll; }
+          body                    { padding-top:50px; }
+  </style>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="/js/core.js"></script>
+  <title>Elfin</title>
+<head>
+<body ng-controller="wordlist">
+<h3 class="jumbotron">A non-<a href="https://en.wikipedia.org/wiki/Punycode">punycode</a> <a href="https://en.wikipedia.org/wiki/IDN_homograph_attack">homographic</a> domain generator</h3>
+<div class="container" >
+ 	<p><b>Domain :</b> <input type="text", ng-keydown="clearOnBackspace", ng-init="getList()", ng-pattern="validate", ng-change="getList()", name="enter your domain", ng-model="domain"></p>
+ 	<p><b>Phishy variants on domain : </b> {{domain}}</p>
+  <p ng-if="!list.length"><i>...Couldn't find any yet...</i></p>
+  <ul ng-if="domain.length">
+    <li ng-repeat="x in list">{{x}}</li>
+  </ul>
+</div>
+
+<img src="/img/seaotter.png" alt="sea otter" style="width:400px;height:334px;" >
+
+</body>
+</html>
