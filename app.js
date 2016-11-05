@@ -3,19 +3,24 @@ const express = require('express'),
       csp = require('helmet-csp');
 
 var app = express();
-app.use(express.static(__dirname + '/public'));
-
 app.use(helmet());
 app.use(csp (
     {
       directives: {
         defaultSrc: ["'none'"],
         imgSrc: ["'self'"],
-        scriptSrc: ["'self'", "//ajax.googleapis.com", "//netdna.bootstrapcdn.com"]
-      }
+        scriptSrc: ["'self'", "https://ajax.googleapis.com/ajax/libs/angularjs/", "'unsafe-eval'"], // Angularjs problem!
+        styleSrc: ["https://netdna.bootstrapcdn.com/bootstrap/", "'sha256-1PxuDsPyGK6n+LZsMv0gG4lMX3i3XigG6h0CzPIjwrE='" ],
+        fontSrc: ["https://netdna.bootstrapcdn.com/bootstrap/"],
+        reportUri: "https://e49ac078adcc8bebde9ae6eaf2766663.report-uri.io/r/default/csp/reportOnly",
+      },
+
+      reportOnly: true
     }
   )
 );
+
+app.use(express.static(__dirname + '/public'));
 
 app.get("*", function(req,res){
   res.sendFile("./public/index.html");
