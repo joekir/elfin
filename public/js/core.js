@@ -40,5 +40,5 @@ app.controller('wordlist', function($scope) {
     }
 
     // crude for now.
-    $scope.validate = /^(?:[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/
+    $scope.validate = /^(?:[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/i
 });
