@@ -55,6 +55,6 @@ app.controller('wordlist', function($scope,$http) {
       }
     }
 
-    // crude for now.
-    $scope.validate = /^(?:[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/i
+    // We're not allowing subdomains, only secondaries.
+    $scope.validate = /^[a-z0-9]+(?:-[a-z0-9]+)*\.[a-z]{2,}$/i
 });
