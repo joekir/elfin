@@ -2,7 +2,7 @@ var app = angular.module('elfin', []);
 
 app.controller('wordlist', function($scope,$http) {
 
-    $scope.domain = "gmail.com";
+    $scope.domain = "hotmail.com";
 
     $scope.list = [];
     $scope.dict = {};
@@ -48,7 +48,7 @@ app.controller('wordlist', function($scope,$http) {
           for (var j=0; j < alts.length; j++) {
             aft[0] = alts[j];
             // Keep the front part fixed and modify the rest
-            $scope.list.push(fore + aft.join("") + "." + $scope.tld);
+            $scope.list.push(fore + aft.join(""));
             permuteTree(fore,aft);
           }
         }
