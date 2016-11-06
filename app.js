@@ -1,5 +1,6 @@
 const express = require('express'),
       helmet = require('helmet'),
+      hsts = require('hsts'),
       csp = require('helmet-csp'),
       bodyParser = require('body-parser'),
       request = require('request'),
@@ -7,7 +8,16 @@ const express = require('express'),
       util = require('util');
 
 var app = express();
+
 app.use(helmet());
+app.use(hsts({
+  maxAge: 15552000,  // 180 days
+  setIf: function (req, res) {
+    // for the nginx reverse proxy
+    return req.secure || (req.headers['x-forwarded-proto'] === 'https')
+  }
+}));
+
 app.use(csp (
     {
       directives: {
