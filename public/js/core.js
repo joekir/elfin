@@ -1,18 +1,34 @@
 var app = angular.module('elfin', []);
 
-app.controller('wordlist', function($scope) {
+app.controller('wordlist', function($scope,$http) {
 
     $scope.domain = "gmail.com";
 
     $scope.list = [];
+    $scope.dict = {};
 
     $scope.getList = function() {
         if ($scope.domain){
           $scope.list = []; // clear the list
+          $scope.dict = {}; // clear the dictionary
+
           var s = $scope.domain.toLowerCase().split(".");
           var arr = s[0].split("");
           $scope.tld = s.splice(1,s.length).join("");
           permuteTree('',arr);
+
+          $http({
+              method: 'POST',
+              url: '/domains',
+              data: {
+                list : $scope.list,
+                tld  : $scope.tld
+              }
+          }).then(function successCallback(res) {
+                $scope.dict = res.data;
+              }, function errorCallback(res) {
+                console.log(res)
+          });
         }
     };
 

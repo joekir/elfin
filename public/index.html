@@ -3,6 +3,7 @@
 <head>
   <link type="image/x-icon" rel='shortcut icon' href="/img/favicon.ico">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/style/core.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="/js/core.js"></script>
   <title>Elfin</title>
@@ -13,9 +14,13 @@
  	<p><b>Domain :</b> <input type="text", ng-keydown="clearOnBackspace", ng-init="getList()", ng-pattern="validate", ng-change="getList()", name="enter your domain", ng-model="domain"></p>
  	<p><b>Phishy variants on domain : </b> {{domain}}</p>
   <p ng-if="!list.length"><i>...Couldn't find any yet...</i></p>
-  <ul ng-if="domain.length">
-    <li ng-repeat="x in list">{{x}}</li>
-  </ul>
+  <table ng-if="domain.length" class="table table-hover table-condensed compact-table">
+    <tr ng-repeat="(domain, registered) in dict">
+      <td>{{ domain }}</td>
+      <td class="success" ng-if="!registered"><a target="_blank" href="https://www.domcomp.com/?refcode=581ea0fb190000a3f1817ae1">Available</a></td>
+      <td class="danger" ng-if="registered">Taken</td>
+    </tr>
+  </table>
 </div>
 
 <img src="/img/seaotter.png" alt="sea otter" width="400px" height="334px" >
