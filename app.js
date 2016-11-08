@@ -27,10 +27,10 @@ app.use(csp (
         styleSrc: ["'self'", "https://netdna.bootstrapcdn.com/bootstrap/", "'sha256-1PxuDsPyGK6n+LZsMv0gG4lMX3i3XigG6h0CzPIjwrE='" ],
         fontSrc: ["https://netdna.bootstrapcdn.com/bootstrap/"],
         connectSrc: ["'self'"],
-        reportUri: "https://e49ac078adcc8bebde9ae6eaf2766663.report-uri.io/r/default/csp/reportOnly",
+        reportUri: "https://e49ac078adcc8bebde9ae6eaf2766663.report-uri.io/r/default/csp/enforce"
       },
 
-      reportOnly: true
+      reportOnly: false
     }
   )
 );
