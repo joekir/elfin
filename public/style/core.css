@@ -1,3 +1,9 @@
 .compact-table {
   width: 30%
 }
+
+td {
+  /* Still tryign to identify the best choice for this...*/
+  font-family: Arial; sans-serif;
+  font-kerning: none;
+}
