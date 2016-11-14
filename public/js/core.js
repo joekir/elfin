@@ -34,8 +34,10 @@ app.controller('wordlist', function($scope,$http) {
 
     // Will build this up over time
     var dict = {
+      "l" : ["I"],
       "m" : ["rn", "rri"],
-      "l" : ["I"]
+      "n" : ["h"],
+      "w" : ["vv"]
     }
 
     function permuteTree(prev, arr){
