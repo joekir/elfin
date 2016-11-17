@@ -5,10 +5,12 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       request = require('request'),
       async   = require('async'),
-      util = require('util');
+      util = require('util'),
+      morgan = require('morgan');
 
 var app = express();
 
+app.use(morgan('dev'))
 app.use(helmet());
 app.use(hsts({
   maxAge: 15552000,  // 180 days
