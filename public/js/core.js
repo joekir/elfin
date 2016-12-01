@@ -37,6 +37,7 @@ app.controller('wordlist', function($scope,$http,$location) {
               }
           }).then(function successCallback(res) {
                 $scope.dict = res.data;
+                $location.search('q',$scope.domain);
               }, function errorCallback(res) {
                 console.log(res)
           });
