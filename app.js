@@ -42,8 +42,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 
-app.get("*", function(req,res){
-  res.sendFile("./public/index.html");
+app.get("/search", function(req,res){
+  res.sendFile("./public/home.html",{ root: __dirname });
+});
+
+app.get("*",function(req,res){
+  res.redirect("/search");
 });
 
 /*
@@ -74,7 +78,10 @@ app.post("/domains", function(req, res) {
 
 // Catch other stuff and deny.
 app.use(function(err, req, res, next) {
-    res.redirect(403,"back");
+    if(err){
+      console.log(err)
+      res.redirect(403,"back");
+    }
 });
 
 var port = 3000;

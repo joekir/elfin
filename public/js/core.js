@@ -1,8 +1,19 @@
 var app = angular.module('elfin', []);
 
-app.controller('wordlist', function($scope,$http) {
+app.config(['$locationProvider', function($locationProvider) {
+   $locationProvider.html5Mode(true);
+}]);
 
-    $scope.domain = "hotmail.com";
+app.controller('wordlist', function($scope,$http,$location) {
+    var query = $location.search()
+
+    if(query.q != undefined) {
+      $scope.domain = query.q;
+    }
+    else{
+      $location.search('q','hotmail.com');
+      $scope.domain = "hotmail.com";
+    }
 
     $scope.list = [];
     $scope.dict = {};
