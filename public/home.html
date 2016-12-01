@@ -18,7 +18,7 @@
   <table ng-if="domain.length" class="table table-hover table-condensed compact-table">
     <tr ng-repeat="(domain, registered) in dict">
       <td>{{ domain }}</td>
-      <td class="success" ng-if="!registered"><a target="_blank" href="https://www.domcomp.com/?refcode=581ea0fb190000a3f1817ae1">Available</a></td>
+      <td class="success" ng-if="!registered"><a target="_blank" href="https://www.namecheap.com/domains/registration/results.aspx?domain={{domain}}&aff=105715">Available</a></td>
       <td class="danger" ng-if="registered">Taken</td>
     </tr>
   </table>

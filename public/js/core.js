@@ -36,7 +36,10 @@ app.controller('wordlist', function($scope,$http,$location) {
                 tld  : $scope.tld
               }
           }).then(function successCallback(res) {
-                $scope.dict = res.data;
+                for(key in res.data){
+                  $scope.dict[key + '.' + $scope.tld] = res.data[key];
+                }
+
                 $location.search('q',$scope.domain);
               }, function errorCallback(res) {
                 console.log(res)
