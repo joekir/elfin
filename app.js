@@ -55,6 +55,9 @@ app.get("*",function(req,res){
   This api queries them and returns the dictionary blob;
 */
 app.post("/domains", function(req, res) {
+  console.log('querying domains like: %s.%s'
+                ,req.body.list[0],req.body.tld);
+
   var dict = {};
   var tld = req.body.tld;
   req.body.list.map(x => dict[x] = true);
