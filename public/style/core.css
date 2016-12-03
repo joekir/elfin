@@ -3,9 +3,8 @@
 }
 
 td {
-  /* Still tryign to identify the best choice for this...*/
-  font-family: Arial; sans-serif;
-  font-kerning: none;
+  font-family: Arial, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 .container {
